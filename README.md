@@ -15,6 +15,18 @@ https://book.getfoundry.sh/
 
 ## Usage
 
+## Add RPC URL to envirement
+```shell
+export BSC_RPC_URL=https://bsc-dataseed.binance.org/
+```
+
+### RUN TEST in BSC fork
+
+```shell
+forge test --fork-url $BSC_RPC_URL -vvv
+```
+
+
 ### Build
 
 ```shell

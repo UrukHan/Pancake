@@ -2,5 +2,18 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+ffi = true
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts",
+    "@gnosis.pm/safe-contracts/=lib/safe-contracts"
+]
+
+# Solidity compiler settings
+[profile.solc]
+optimizer = true
+runs = 999999
+
+# Fork settings (BSC mainnet)
+[rpc_endpoints]
+bsc = "${BSC_RPC_URL}"
