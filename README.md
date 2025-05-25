@@ -15,6 +15,11 @@ https://book.getfoundry.sh/
 
 ## Usage
 
+## Deploy
+```shell
+forge script script/DeployOptimizedSwapAndLiquidity.s.sol --rpc-url https://data-seed-prebsc-1-s1.binance.org:8545/ --private-key ... --broadcast --verify --etherscan-api-key ... -vvvv
+```
+
 ## Add RPC URL to envirement
 ```shell
 export BSC_RPC_URL=https://bsc-dataseed.binance.org/

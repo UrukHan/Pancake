@@ -5,6 +5,7 @@ broadcast/
 .idea/
 lib/
 .github/
+.env
 
 # Docs
 docs/
