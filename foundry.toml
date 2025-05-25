@@ -17,3 +17,7 @@ runs = 999999
 # Fork settings (BSC mainnet)
 [rpc_endpoints]
 bsc = "${BSC_RPC_URL}"
+bsc_testnet = "${BSC_RPC_URL}"
+
+[etherscan]
+bsc_testnet = { key = "RRYNWSXGPHNKIRYVUSAU5IJCIEDCB11GZM", url = "https://api-testnet.bscscan.com/api" }
