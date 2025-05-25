@@ -38,9 +38,9 @@ contract OptimizedSwapTest is Test {
         (uint reserveIn, uint reserveOut) = WETH == token0 ? (reserve0, reserve1) : (reserve1, reserve0);
 
         uint256 amountOut = 10 * 10**18;
-        uint256 amountIn = (reserveIn * amountOut * 1000) / ((reserveOut - amountOut) * 998) + 1;
+        uint256 amountIn = (reserveIn * amountOut * 10000) / ((reserveOut - amountOut) * 9975) + 1;
 
-        uint256 ethSent = amountIn + 0.01 ether; // запас
+        uint256 ethSent = amountIn + 0.01 ether;
 
         uint256 balanceBefore = IERC20(TOKEN).balanceOf(s_user);
 
@@ -52,6 +52,7 @@ contract OptimizedSwapTest is Test {
 
         vm.stopPrank();
     }
+
 
     function testRevertInsufficientETH() external {
         vm.createSelectFork("bsc");

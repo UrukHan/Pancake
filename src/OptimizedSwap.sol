@@ -36,10 +36,10 @@ contract OptimizedSwap {
         WETH = _WETH;
     }
 
-    // Correct PancakeSwap fee (998 instead of 997)
+    // Correct PancakeSwap fee (9975)
     function _getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) internal pure returns (uint amountIn) {
         unchecked {
-            amountIn = (reserveIn * amountOut * 1000) / ((reserveOut - amountOut) * 998) + 1;
+            amountIn = (reserveIn * amountOut * 10000) / ((reserveOut - amountOut) * 9975) + 1;
         }
     }
 
@@ -59,12 +59,11 @@ contract OptimizedSwap {
 
         IPancakePair pancakePair = IPancakePair(pair);
 
-        // Ensure reserves are up-to-date before swap to avoid unexpected revert
-        pancakePair.sync();
-
         (uint112 reserve0, uint112 reserve1,) = pancakePair.getReserves();
 
-        (uint reserveIn, uint reserveOut, uint amount0Out, uint amount1Out) = WETH == pancakePair.token0()
+        (bool wethIsToken0) = WETH == pancakePair.token0();
+
+        (uint reserveIn, uint reserveOut, uint amount0Out, uint amount1Out) = wethIsToken0
             ? (reserve0, reserve1, uint(0), amountOut)
             : (reserve1, reserve0, uint(0), amountOut);
 
